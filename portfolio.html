@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Systems Lead — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF4EC;
+    --bg-alt: #E7CFBC;
+    --surface: #FFFFFF;
+    --ink: #292F36;
+    --ink-mid: #3E454F;
+    --ink-muted: #6B7280;
+    --ink-faint: #9CA3AF;
+    --teal: #3C6E71;
+    --teal-light: #4D8B8E;
+    --teal-bg: #E8F3F3;
+    --teal-border: #BBDADB;
+    --mauve: #93748A;
+    --mauve-bg: #F3ECF1;
+    --mauve-border: #D4BCC9;
+    --rose: #7A5F70;
+    --rose-bg: #EDE4EB;
+    --divider: #DCCFBF;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 3px rgba(41,47,54,0.07), 0 1px 2px rgba(41,47,54,0.05);
+    --shadow-md: 0 4px 12px rgba(41,47,54,0.08), 0 2px 6px rgba(41,47,54,0.05);
+    --shadow-lg: 0 12px 40px rgba(41,47,54,0.1), 0 4px 16px rgba(41,47,54,0.06);
+    --font-display: 'Open Sans', system-ui, sans-serif;
+    --font-body: 'Open Sans', system-ui, sans-serif;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,244,236,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--divider);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--teal); font-style: italic; font-weight: 300; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: white !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.82rem !important;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .nav-cta:hover { background: var(--teal-light) !important; color: white !important; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+  section.full { max-width: 100%; padding-left: 0; padding-right: 0; }
+
+  /* ── HERO ── */
+  .hero-wrap {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 2rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hero-inner { max-width: 720px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-bg);
+    color: var(--teal);
+    border: 1px solid var(--teal-border);
+    border-radius: var(--radius-pill);
+    padding: 0.35rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+    font-weight: 300;
+  }
+  .hero-bio {
+    font-size: 1.1rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .tag {
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius-pill);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn-secondary {
+    color: var(--ink-mid);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: var(--transition);
+  }
+  .btn-secondary:hover { color: var(--teal); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    opacity: 0.4;
+  }
+  .hero-scroll span { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--ink-muted), transparent);
+    animation: scrollDown 2s ease infinite;
+  }
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+  .hero-wrap { position: relative; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); font-weight: 300; }
+  .section-desc {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 1px;
+    background: var(--divider);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── CASE STUDY CARDS ── */
+  .case-study-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--divider);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-header {
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--divider);
+    display: flex; align-items: flex-start; gap: 1.25rem;
+  }
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+  .card-icon.teal { background: var(--teal-bg); }
+  .card-icon.amber { background: var(--mauve-bg); }
+  .card-meta { flex: 1; }
+  .card-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    margin-bottom: 0.5rem;
+  }
+  .card-badge.teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .card-badge.amber { background: var(--mauve-bg); color: var(--mauve); border: 1px solid var(--mauve-border); }
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .card-body { padding: 2rem 2.5rem; }
+
+  /* ── BUTTON SHOWCASE ── */
+  .token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .token-chip {
+    background: var(--bg);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+  }
+  .token-chip .label {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--teal);
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+  .token-chip .value {
+    font-size: 0.82rem;
+    color: var(--ink-mid);
+    font-weight: 500;
+  }
+  .token-chip .swatch {
+    width: 24px; height: 24px;
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .states-row {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    align-items: center;
+    padding: 1.75rem;
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+  }
+  .state-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .state-label { font-size: 0.7rem; color: var(--ink-muted); letter-spacing: 0.03em; }
+
+  /* Button variants for showcase */
+  .demo-btn {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .demo-btn.primary {
+    background: var(--teal);
+    color: white;
+  }
+  .demo-btn.primary:hover { background: var(--teal-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(60,110,113,0.3); }
+  .demo-btn.primary:active { transform: translateY(0); }
+  .demo-btn.primary:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+  .demo-btn.secondary {
+    background: transparent;
+    color: var(--teal);
+    border: 1.5px solid var(--teal-border);
+  }
+  .demo-btn.secondary:hover { background: var(--teal-bg); border-color: var(--teal); }
+  .demo-btn.ghost {
+    background: transparent;
+    color: var(--ink-mid);
+    border: 1.5px solid var(--divider);
+  }
+  .demo-btn.ghost:hover { background: var(--bg); color: var(--ink); }
+  .demo-btn.destructive {
+    background: #B91C1C;
+    color: white;
+  }
+  .demo-btn.destructive:hover { background: #991B1B; }
+  .demo-btn.loading {
+    background: var(--teal-bg);
+    color: var(--teal);
+    border: 1.5px solid var(--teal-border);
+    cursor: not-allowed;
+  }
+  .demo-btn.disabled-state {
+    background: var(--bg-alt);
+    color: var(--ink-faint);
+    cursor: not-allowed;
+    border: 1.5px solid var(--divider);
+  }
+  .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid var(--teal-border);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Platform comparison */
+  .platform-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .platform-card {
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--divider);
+    padding: 1.25rem;
+  }
+  .platform-card h4 {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-mid);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .platform-card .spec-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .platform-card .spec-row:last-child { border-bottom: none; }
+  .platform-card .spec-row strong { color: var(--ink-mid); font-weight: 500; }
+
+  /* Healthcare pattern */
+  .healthcare-demo {
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--divider);
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  .confirmation-modal {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--divider);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    max-width: 380px;
+  }
+  .modal-icon {
+    width: 40px; height: 40px;
+    background: #FEF2F2;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .modal-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .modal-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.5; margin-bottom: 1.25rem; }
+  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; }
+  .modal-cancel {
+    background: transparent; border: 1px solid var(--divider);
+    color: var(--ink-mid); padding: 0.5rem 1rem;
+    border-radius: var(--radius-pill); font-size: 0.82rem; cursor: pointer; font-family: var(--font-body);
+    transition: var(--transition);
+  }
+  .modal-cancel:hover { background: var(--bg); }
+  .modal-confirm {
+    background: #DC2626; border: none; color: white;
+    padding: 0.5rem 1.1rem; border-radius: var(--radius-pill);
+    font-size: 0.82rem; font-weight: 500; cursor: pointer; font-family: var(--font-body);
+    transition: var(--transition);
+  }
+  .modal-confirm:hover { background: #B91C1C; }
+
+  /* ── A11Y METRICS ── */
+  .metrics-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .metric {
+    background: var(--bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--divider);
+    padding: 1rem;
+    text-align: center;
+  }
+  .metric .num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .metric .desc { font-size: 0.75rem; color: var(--ink-muted); line-height: 1.3; }
+
+  /* ── INSIGHT CARDS (IDS section) ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .insight-card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--divider);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+  }
+  .insight-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .insight-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .insight-card.teal::before { background: var(--teal); }
+  .insight-card.amber::before { background: var(--mauve); }
+  .insight-card.rose::before { background: var(--rose); }
+  .insight-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--divider);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .insight-card h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .insight-card p { font-size: 0.83rem; color: var(--ink-muted); line-height: 1.55; }
+  .insight-source {
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .twin-alignment {
+    background: var(--teal-bg);
+    border: 1px solid var(--teal-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.75rem;
+    margin-top: 2rem;
+  }
+  .twin-alignment h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+  .twin-alignment ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .twin-alignment li {
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+  .twin-alignment li::before {
+    content: '→';
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── CONTENT PROSE ── */
+  .prose h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.75rem 0 0.5rem;
+  }
+  .prose p {
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+  }
+  .prose p strong { font-weight: 500; color: var(--ink); }
+
+  .sub-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    display: block;
+  }
+
+  /* ── TOKEN ARCHITECTURE SVG ── */
+  .token-arch {
+    background: var(--bg);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  footer .footer-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  footer .footer-name em { font-style: italic; color: #8CCDD0; font-weight: 300; }
+  footer p { font-size: 0.82rem; line-height: 1.6; }
+  footer a { color: #5DCAA5; text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex; gap: 0; border-bottom: 1px solid var(--divider);
+    margin-bottom: 1.5rem;
+  }
+  .tab-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--ink-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-body);
+  }
+  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); font-weight: 500; }
+  .tab-btn:hover:not(.active) { color: var(--ink-mid); }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1rem; }
+    .card-body { padding: 1.5rem; }
+    .card-header { padding: 1.5rem; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .hero-wrap { padding: 80px 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Meghan<span> Morris</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#accessibility">Accessibility</a></li>
+    <li><a href="#ai-knowledge">AI & Systems</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap" id="home">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Available for senior roles</div>
+    <div class="hero">
+      <h1>
+        Building design systems<br>
+        that <em>serve people,</em><br>
+        not just teams.
+      </h1>
+      <p class="hero-bio">
+        I'm a Design Systems Lead with deep experience in health technology — architecting the invisible infrastructure that makes products faster to build, more consistent to experience, and genuinely accessible to every human who depends on them.
+      </p>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">Design Systems Architecture</span>
+      <span class="tag">Accessibility & WCAG</span>
+      <span class="tag">AI-Native Tooling</span>
+      <span class="tag">Figma MCP</span>
+      <span class="tag">Multi-platform</span>
+      <span class="tag">Health Technology</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View case studies ↓</a>
+      <a href="#contact" class="btn-secondary">Let's talk →</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- WORK SECTION -->
+<div class="section-divider"></div>
+<section id="work">
+  <p class="section-label">Selected Work</p>
+  <h2 class="section-title">Case studies in<br><em>systems thinking</em></h2>
+  <p class="section-desc">
+    A component-level example that shows how I think about systems: token architecture, accessibility, multi-platform translation, and healthcare-specific interaction patterns — all surfaced through a single, foundational element.
+  </p>
+
+  <!-- CASE STUDY 1: BUTTON -->
+  <div class="case-study-card fade-in">
+    <div class="card-header">
+      <div class="card-icon teal">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="2" y="6" width="18" height="10" rx="5" fill="#276952" opacity="0.15"/>
+          <rect x="2" y="6" width="18" height="10" rx="5" stroke="#276952" stroke-width="1.5"/>
+          <circle cx="16" cy="11" r="2" fill="#276952"/>
+        </svg>
+      </div>
+      <div class="card-meta">
+        <div class="card-badge teal">Component Architecture</div>
+        <h2 class="card-title">The button: a foundation that reveals everything</h2>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="prose">
+        <p>
+          A button is deceptively simple. But how a design system treats its foundational interactive element tells you everything about how the team thinks: about tokens, about accessibility, about platform constraints, about the users whose health may depend on getting these decisions right.
+        </p>
+        <p>
+          This case study walks through my approach to a single component — from semantic token architecture through multi-platform translation to the healthcare-specific interaction patterns that responsible product design demands.
+        </p>
+      </div>
+
+      <!-- TABS -->
+      <div class="tab-bar" style="margin-top: 1.75rem;">
+        <button class="tab-btn active" onclick="switchTab(event, 'tab-tokens')">Token architecture</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-states')">States & variants</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-platforms')">Multi-platform</button>
+        <button class="tab-btn" onclick="switchTab(event, 'tab-health')">Healthcare patterns</button>
+      </div>
+
+      <!-- TAB: TOKENS -->
+      <div class="tab-pane active" id="tab-tokens">
+        <div class="prose">
+          <p>
+            Before touching Figma or code, I map the semantic layer. A button doesn't reference a color — it references a <strong>decision</strong>. That separation is what makes themes, dark mode, and brand refreshes non-destructive.
+          </p>
+        </div>
+        <div class="token-arch">
+          <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#A8A29E"/>
+              </marker>
+            </defs>
+            <!-- Layer labels -->
+            <text x="30" y="30" font-family="'DM Sans',sans-serif" font-size="10" fill="#78716C" letter-spacing="0.08em" font-weight="500">PRIMITIVE</text>
+            <text x="290" y="30" font-family="'DM Sans',sans-serif" font-size="10" fill="#78716C" letter-spacing="0.08em" font-weight="500">SEMANTIC</text>
+            <text x="530" y="30" font-family="'DM Sans',sans-serif" font-size="10" fill="#78716C" letter-spacing="0.08em" font-weight="500">COMPONENT</text>
+
+            <!-- Primitive tokens -->
+            <rect x="10" y="42" width="220" height="34" rx="6" fill="#EAF5EF" stroke="#C2DFD0" stroke-width="1"/>
+            <rect x="18" y="51" width="14" height="14" rx="3" fill="#276952"/>
+            <text x="40" y="62" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#276952">color.teal.600</text>
+            <text x="150" y="62" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#A8A29E">#276952</text>
+
+            <rect x="10" y="82" width="220" height="34" rx="6" fill="#EAF5EF" stroke="#C2DFD0" stroke-width="1"/>
+            <rect x="18" y="91" width="14" height="14" rx="3" fill="#3D8A6B"/>
+            <text x="40" y="102" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#276952">color.teal.500</text>
+            <text x="150" y="102" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#A8A29E">#3D8A6B</text>
+
+            <rect x="10" y="122" width="220" height="34" rx="6" fill="#F7F3EE" stroke="#E7E2DB" stroke-width="1"/>
+            <text x="18" y="140" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#78716C">spacing.4</text>
+            <text x="150" y="140" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#A8A29E">16px</text>
+
+            <rect x="10" y="162" width="220" height="34" rx="6" fill="#F7F3EE" stroke="#E7E2DB" stroke-width="1"/>
+            <text x="18" y="180" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#78716C">radius.pill</text>
+            <text x="150" y="180" font-family="'SF Mono','Fira Code',monospace" font-size="10" fill="#A8A29E">999px</text>
+
+            <!-- Arrows prim → semantic -->
+            <line x1="232" y1="59" x2="270" y2="59" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="232" y1="99" x2="270" y2="99" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <!-- Semantic tokens -->
+            <rect x="272" y="42" width="220" height="34" rx="6" fill="#EAF5EF" stroke="#C2DFD0" stroke-width="1"/>
+            <text x="282" y="55" font-family="'SF Mono','Fira Code',monospace" font-size="9.5" fill="#276952">color.action.primary</text>
+            <text x="282" y="68" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="#A8A29E">→ color.teal.600</text>
+
+            <rect x="272" y="82" width="220" height="34" rx="6" fill="#EAF5EF" stroke="#C2DFD0" stroke-width="1"/>
+            <text x="282" y="95" font-family="'SF Mono','Fira Code',monospace" font-size="9.5" fill="#276952">color.action.primary.hover</text>
+            <text x="282" y="108" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="#A8A29E">→ color.teal.500</text>
+
+            <rect x="272" y="122" width="220" height="34" rx="6" fill="#F7F3EE" stroke="#E7E2DB" stroke-width="1"/>
+            <text x="282" y="140" font-family="'SF Mono','Fira Code',monospace" font-size="9.5" fill="#78716C">spacing.component.md</text>
+
+            <rect x="272" y="162" width="220" height="34" rx="6" fill="#F7F3EE" stroke="#E7E2DB" stroke-width="1"/>
+            <text x="282" y="180" font-family="'SF Mono','Fira Code',monospace" font-size="9.5" fill="#78716C">radius.interactive</text>
+
+            <!-- Arrows semantic → component -->
+            <line x1="494" y1="59" x2="532" y2="80" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="494" y1="99" x2="532" y2="90" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="494" y1="139" x2="532" y2="110" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="494" y1="179" x2="532" y2="120" stroke="#E7E2DB" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <!-- Component token -->
+            <rect x="534" y="55" width="210" height="90" rx="8" fill="#276952"/>
+            <text x="546" y="76" font-family="'SF Mono','Fira Code',monospace" font-size="9" fill="rgba(255,255,255,0.5)">button.primary</text>
+            <text x="546" y="93" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="rgba(255,255,255,0.7)">background: color.action.primary</text>
+            <text x="546" y="107" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="rgba(255,255,255,0.7)">padding: spacing.component.md</text>
+            <text x="546" y="121" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="rgba(255,255,255,0.7)">radius: radius.interactive</text>
+            <text x="546" y="135" font-family="'SF Mono','Fira Code',monospace" font-size="8.5" fill="rgba(255,255,255,0.7)">color: color.on-action.primary</text>
+          </svg>
+        </div>
+        <div class="prose">
+          <p><strong>Why this matters:</strong> When the brand refreshes from teal to blue, we update one primitive token. Every component that consumes <code style="background:var(--bg);padding:2px 5px;border-radius:4px;font-size:0.82em;color:var(--teal)">color.action.primary</code> inherits the change without a single design file edit.</p>
+        </div>
+      </div>
+
+      <!-- TAB: STATES -->
+      <div class="tab-pane" id="tab-states">
+        <div class="prose">
+          <p>Every state is an accessibility story. I design states not just for visual differentiation but for keyboard users, screen reader users, and users with low vision.</p>
+        </div>
+        <span class="sub-label">Variants</span>
+        <div class="states-row">
+          <div class="state-item">
+            <button class="demo-btn primary">Primary</button>
+            <span class="state-label">Primary action</span>
+          </div>
+          <div class="state-item">
+            <button class="demo-btn secondary">Secondary</button>
+            <span class="state-label">Secondary action</span>
+          </div>
+          <div class="state-item">
+            <button class="demo-btn ghost">Ghost</button>
+            <span class="state-label">Tertiary / ghost</span>
+          </div>
+          <div class="state-item">
+            <button class="demo-btn destructive">Destructive</button>
+            <span class="state-label">High-risk action</span>
+          </div>
+          <div class="state-item">
+            <button class="demo-btn loading">
+              <div class="spinner"></div>
+              Loading
+            </button>
+            <span class="state-label">Loading state</span>
+          </div>
+          <div class="state-item">
+            <button class="demo-btn disabled-state" disabled>Disabled</button>
+            <span class="state-label">Disabled</span>
+          </div>
+        </div>
+        <div class="metrics-row">
+          <div class="metric">
+            <div class="num">4.5:1</div>
+            <div class="desc">Min contrast ratio — primary button text</div>
+          </div>
+          <div class="metric">
+            <div class="num">3px</div>
+            <div class="desc">Focus ring offset — keyboard navigation</div>
+          </div>
+          <div class="metric">
+            <div class="num">44px</div>
+            <div class="desc">Min touch target — mobile / WCAG 2.5.5</div>
+          </div>
+          <div class="metric">
+            <div class="num">200ms</div>
+            <div class="desc">State transition — perceptible but not jarring</div>
+          </div>
+        </div>
+        <div class="prose">
+          <p><strong>Hover:</strong> try hovering each button above. <strong>Focus:</strong> tab through them to see keyboard focus rings. The disabled state maintains sufficient contrast while clearly communicating non-interactivity — without using color alone.</p>
+        </div>
+      </div>
+
+      <!-- TAB: PLATFORMS -->
+      <div class="tab-pane" id="tab-platforms">
+        <div class="prose">
+          <p>
+            The same semantic token layer makes cross-platform translation lossless. The <em>concept</em> of a primary action button is shared. The <em>implementation</em> respects each platform's native contract.
+          </p>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-card">
+            <h4>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="#276952" stroke-width="1.5"/></svg>
+              Web
+            </h4>
+            <div class="spec-row"><span>Touch target</span><strong>44×44px</strong></div>
+            <div class="spec-row"><span>Press state</span><strong>:active CSS</strong></div>
+            <div class="spec-row"><span>Focus ring</span><strong>3px offset outline</strong></div>
+            <div class="spec-row"><span>Token format</span><strong>CSS variables</strong></div>
+            <div class="spec-row"><span>Animation</span><strong>CSS transitions</strong></div>
+          </div>
+          <div class="platform-card">
+            <h4>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="1" width="8" height="12" rx="2" stroke="#276952" stroke-width="1.5"/><circle cx="7" cy="10.5" r="0.75" fill="#276952"/></svg>
+              iOS (Swift)
+            </h4>
+            <div class="spec-row"><span>Touch target</span><strong>44×44pt</strong></div>
+            <div class="spec-row"><span>Press state</span><strong>UIButton highlight</strong></div>
+            <div class="spec-row"><span>Focus ring</span><strong>UIFocusDebugger</strong></div>
+            <div class="spec-row"><span>Token format</span><strong>Swift enums / xcassets</strong></div>
+            <div class="spec-row"><span>Animation</span><strong>UIViewPropertyAnimator</strong></div>
+          </div>
+          <div class="platform-card">
+            <h4>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="1" width="10" height="12" rx="3" stroke="#276952" stroke-width="1.5"/><rect x="5" y="11" width="4" height="1.5" rx="0.75" fill="#276952"/></svg>
+              Android
+            </h4>
+            <div class="spec-row"><span>Touch target</span><strong>48dp (Material)</strong></div>
+            <div class="spec-row"><span>Press state</span><strong>Ripple effect</strong></div>
+            <div class="spec-row"><span>Focus ring</span><strong>StateListDrawable</strong></div>
+            <div class="spec-row"><span>Token format</span><strong>XML attrs / Compose</strong></div>
+            <div class="spec-row"><span>Animation</span><strong>MotionLayout</strong></div>
+          </div>
+        </div>
+        <div class="prose">
+          <p><strong>Key insight:</strong> Shared semantic tokens sit in a platform-agnostic JSON source of truth (Style Dictionary). Platform-specific transformers output CSS variables, Swift enums, and XML attributes from the same token file — ensuring a brand change propagates everywhere without manual translation.</p>
+        </div>
+      </div>
+
+      <!-- TAB: HEALTHCARE -->
+      <div class="tab-pane" id="tab-health">
+        <div class="prose">
+          <p>In health technology, a button can be a decision point with real clinical weight. Stopping a medication, submitting a health log, deleting a care record — these actions require a different interaction contract than an e-commerce checkout.</p>
+          <p><strong>The pattern:</strong> high-stakes actions use a destructive button variant that triggers a confirmation modal. The friction is intentional — just enough to prevent accidental taps, not enough to frustrate deliberate actions.</p>
+        </div>
+        <div class="healthcare-demo">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+            <div>
+              <span class="sub-label" style="margin-top: 0;">Trigger</span>
+              <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button class="demo-btn primary">Save changes</button>
+                <button class="demo-btn destructive" onclick="document.getElementById('modal-demo').style.display='block'">Stop medication</button>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--ink-faint); margin-top: 0.5rem;">Click "Stop medication" to see the confirmation pattern</p>
+            </div>
+            <div id="modal-demo" style="display:none;">
+              <span class="sub-label" style="margin-top: 0;">Confirmation modal</span>
+              <div class="confirmation-modal">
+                <div class="modal-icon">⚠️</div>
+                <div class="modal-title">Stop this medication?</div>
+                <div class="modal-desc">Stopping Metformin 500mg will remove it from your active care plan. Your care team will be notified. This action cannot be undone from the app.</div>
+                <div class="modal-actions">
+                  <button class="modal-cancel" onclick="document.getElementById('modal-demo').style.display='none'">Cancel</button>
+                  <button class="modal-confirm" onclick="document.getElementById('modal-demo').style.display='none'">Yes, stop medication</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prose" style="margin-top: 1rem;">
+          <p><strong>Design decisions:</strong> Warning icon communicates severity without using color alone. Copy is specific and consequential — "cannot be undone" is honest, not alarmist. The confirm label repeats the action ("Yes, stop medication") so users confirm what they're actually doing, not just clicking "OK."</p>
+          <p><strong>Accessibility note:</strong> The modal traps focus, announces itself to screen readers via <code style="background:var(--bg);padding:2px 5px;border-radius:4px;font-size:0.82em;color:var(--teal)">role="dialog" aria-modal="true"</code>, and returns focus to the trigger button on dismiss.</p>
+        </div>
+      </div>
+
+    </div><!-- card-body -->
+  </div><!-- case study 1 -->
+
+</section>
+
+<!-- ACCESSIBILITY LEADERSHIP SECTION -->
+<div class="section-divider"></div>
+<section id="accessibility">
+  <p class="section-label">Accessibility Leadership</p>
+  <h2 class="section-title">Advocacy, research,<br>and <em>public work</em></h2>
+  <p class="section-desc">
+    Accessibility isn't a checklist I apply at the end — it's a practice I've built systems around, taught publicly, and contributed to at the standards level. Two pieces of public work that show this in action.
+  </p>
+
+  <!-- AXE-CON TALK -->
+  <div class="case-study-card fade-in" style="margin-bottom: 2rem;">
+    <div class="card-header">
+      <div class="card-icon" style="background: var(--mauve-bg);">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="11" r="9" stroke="#93748A" stroke-width="1.5"/>
+          <polygon points="9,7.5 15.5,11 9,14.5" fill="#93748A"/>
+        </svg>
+      </div>
+      <div class="card-meta">
+        <div class="card-badge" style="background:var(--mauve-bg);color:var(--mauve);border:1px solid var(--mauve-border);">Conference Talk · axe-con 2022</div>
+        <h2 class="card-title">Building Accessible Design Systems: Try, Try, Try Again</h2>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <!-- CO-PRESENTER CREDIT -->
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1rem;background:var(--bg);border-radius:var(--radius-md);border:1px solid var(--divider);margin-bottom:1.5rem;">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--mauve-bg);display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:600;color:var(--mauve);flex-shrink:0;">DH</div>
+        <div>
+          <div style="font-size:0.78rem;color:var(--ink-faint);letter-spacing:0.04em;text-transform:uppercase;font-weight:500;">Co-presented with</div>
+          <a href="https://daniel.hendersonede.com" target="_blank" rel="noopener" style="font-size:0.88rem;color:var(--teal);text-decoration:none;font-weight:600;">Daniel Henderson-Ede ↗</a>
+          <span style="font-size:0.82rem;color:var(--ink-muted);"> — Daniel's write-up of this talk</span>
+        </div>
+      </div>
+
+      <!-- YOUTUBE EMBED -->
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius-md);margin-bottom:1.5rem;background:var(--ink);">
+        <iframe
+          src="https://www.youtube.com/embed/VWXcRAXHX1Q"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:var(--radius-md);"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Building Accessible Design Systems – Try, Try, Try Again · axe-con 2022 · Meghan Morris & Daniel Henderson-Ede">
+        </iframe>
+      </div>
+
+      <div class="prose">
+        <p>
+          Accessibility in a design system doesn't happen once — it's a practice of iteration, advocacy, and learning from what doesn't work the first time. At axe-con 2022, Daniel Henderson-Ede and I co-presented on what embedding accessibility into a large-scale enterprise design system actually looks like from the inside.
+        </p>
+        <p>
+          The talk was honest about the friction. Building for a Fortune 500 organization means navigating a lot of competing stakeholders, and the accessibility team doesn't always win the argument immediately. We shared what we learned from those losses: how to build the case over time, how to recover from decisions that don't go your way, and how to design systems resilient enough to hold inclusive standards even when implementation teams work at speed.
+        </p>
+        <p>
+          The session title — <strong>Try, Try, Try Again</strong> — was deliberately chosen. It captures the reality of doing this work inside large organizations, and it's the posture I bring to every system I build: persistence, iteration, and a commitment to getting the outcome right rather than getting credit for the first attempt.
+        </p>
+
+        <h3>What the talk covered</h3>
+        <p>
+          We structured the session around three challenges that come up repeatedly when building accessible design systems at scale: <strong>getting buy-in before there's proof</strong>, <strong>handling rollbacks and regressions without losing momentum</strong>, and <strong>creating documentation that actually changes behavior</strong> — not just records it.
+        </p>
+        <p>
+          The audience left with a framework for making the accessibility case to product and engineering leaders, a practical approach to auditing and triaging components by accessibility impact, and concrete examples of what "accessibility as a system principle" looks like in practice versus on paper.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--divider);">
+        <span class="tag">axe-con 2022</span>
+        <span class="tag">Conference Talk</span>
+        <span class="tag">Design Systems</span>
+        <span class="tag">Accessibility</span>
+        <span class="tag">Enterprise Scale</span>
+        <span class="tag">Stakeholder Advocacy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIUM ARTICLE -->
+  <div class="case-study-card fade-in">
+    <div class="card-header">
+      <div class="card-icon teal">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="3" y="4" width="16" height="14" rx="2" stroke="#276952" stroke-width="1.5"/>
+          <line x1="7" y1="8.5" x2="15" y2="8.5" stroke="#276952" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="7" y1="11" x2="15" y2="11" stroke="#276952" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="7" y1="13.5" x2="11" y2="13.5" stroke="#276952" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-meta">
+        <div class="card-badge teal">Published Article · 2024</div>
+        <h2 class="card-title">The path to WCAG 2.2 conformance through a design system</h2>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <!-- PUBLICATION META -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:0.85rem 1rem;background:var(--bg);border-radius:var(--radius-md);border:1px solid var(--divider);margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="white"><rect x="1" y="3" width="12" height="8" rx="1.5"/><path d="M4 6.5h6M4 8.5h4" stroke="rgba(255,255,255,0.7)" stroke-width="1" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.78rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:500;">Published on</div>
+            <div style="font-size:0.88rem;color:var(--ink-mid);font-weight:500;">CVS Health Tech Blog · Medium</div>
+          </div>
+        </div>
+        <a href="https://medium.com/cvs-health-tech-blog/the-path-to-wcag-2-2-conformance-through-our-design-system-59913a8bf876" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:white;padding:0.5rem 1.1rem;border-radius:var(--radius-pill);font-size:0.82rem;font-weight:500;text-decoration:none;transition:var(--transition);" onmouseover="this.style.background='#3D8A6B'" onmouseout="this.style.background='#276952'">Read the full article ↗</a>
+      </div>
+
+      <div class="prose">
+        <p>
+          When WCAG 2.2 was published as a W3C recommendation in October 2023, most design system teams faced months of retroactive remediation. Ours didn't. This published piece — co-authored with colleagues from the inclusive design team — documents the strategy behind that: <strong>future-proofing components against standards that hadn't been ratified yet.</strong>
+        </p>
+        <p>
+          The argument is architectural, not just technical. By building to the WCAG 2.2 working draft from day one — accepting the risk of normative language changes — we absorbed the cost of conformance work early and continuously, rather than in one disruptive, high-stakes sprint when the standard landed.
+        </p>
+
+        <h3>The strategic decision that saved months of rework</h3>
+        <p>
+          Most teams build to what's required today. We built to what we knew was coming: the intent of each criterion doesn't change even when the normative language does. Participating in the W3C Accessibility Guidelines Working Group gave our team direct visibility into the trajectory of WCAG — and even without that access, the public working drafts contain enough signal to make informed bets.
+        </p>
+        <p>
+          Of the 9 new success criteria introduced in WCAG 2.2, 8 applied directly to our system. The article walks through each one — from focus appearance and target size minimums to accessible authentication and redundant entry — and documents the specific component decisions we made to conform. In every case, the work had already been done before the standard was published.
+        </p>
+
+        <h3>Why this matters for system governance</h3>
+        <p>
+          This wasn't just an accessibility win — it was a demonstration of what principled system governance looks like. The principle was simple: <strong>conformance is a floor, not a ceiling.</strong> We documented it, operationalized it, and built it into the component lifecycle. The WCAG 2.2 moment was when that investment paid off publicly.
+        </p>
+      </div>
+
+      <!-- WCAG CRITERIA QUICK REFERENCE -->
+      <span class="sub-label">WCAG 2.2 criteria addressed in the system</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;display:flex;align-items:flex-start;gap:0.5rem;">
+          <span style="font-size:0.75rem;font-weight:500;color:var(--teal);white-space:nowrap;">2.4.11–13</span>
+          <span style="font-size:0.75rem;color:var(--ink-mid);">Focus Not Obscured & Focus Appearance</span>
+        </div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;display:flex;align-items:flex-start;gap:0.5rem;">
+          <span style="font-size:0.75rem;font-weight:500;color:var(--teal);white-space:nowrap;">2.5.7</span>
+          <span style="font-size:0.75rem;color:var(--ink-mid);">Dragging Movements</span>
+        </div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;display:flex;align-items:flex-start;gap:0.5rem;">
+          <span style="font-size:0.75rem;font-weight:500;color:var(--teal);white-space:nowrap;">2.5.8</span>
+          <span style="font-size:0.75rem;color:var(--ink-mid);">Target Size (Minimum)</span>
+        </div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;display:flex;align-items:flex-start;gap:0.5rem;">
+          <span style="font-size:0.75rem;font-weight:500;color:var(--teal);white-space:nowrap;">3.3.7</span>
+          <span style="font-size:0.75rem;color:var(--ink-mid);">Redundant Entry</span>
+        </div>
+        <div style="background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:var(--radius-sm);padding:0.6rem 0.85rem;display:flex;align-items:flex-start;gap:0.5rem;">
+          <span style="font-size:0.75rem;font-weight:500;color:var(--teal);white-space:nowrap;">3.3.8–9</span>
+          <span style="font-size:0.75rem;color:var(--ink-mid);">Accessible Authentication (Min & Enhanced)</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;padding-top:1.25rem;border-top:1px solid var(--divider);">
+        <span class="tag">WCAG 2.2</span>
+        <span class="tag">Published Writing</span>
+        <span class="tag">Design Systems</span>
+        <span class="tag">Inclusive Design</span>
+        <span class="tag">Standards Strategy</span>
+        <span class="tag">W3C</span>
+      </div>
+    </div>
+  </div>
+
+
+<div class="section-divider"></div>
+<section id="ai-knowledge">
+  <p class="section-label">Professional Development</p>
+  <h2 class="section-title">AI & the future of<br><em>design systems</em></h2>
+  <p class="section-desc">
+    In early 2026, I attended the Into Design Systems AI Design Systems Conference — 21 speakers from WhatsApp, GitHub, Figma, Adobe Spectrum, Miro, and more. Here's what I brought back.
+  </p>
+
+  <div class="case-study-card fade-in">
+    <div class="card-header">
+      <div class="card-icon" style="background: var(--mauve-bg);">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M11 3L13.5 8.5L19 9.3L15 13.2L16 19L11 16.3L6 19L7 13.2L3 9.3L8.5 8.5L11 3Z" stroke="#93748A" stroke-width="1.5" stroke-linejoin="round" fill="var(--mauve-bg)"/>
+        </svg>
+      </div>
+      <div class="card-meta">
+        <div class="card-badge amber">Into Design Systems 2026</div>
+        <h2 class="card-title">Design systems as AI infrastructure — what I learned</h2>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="prose">
+        <p>
+          The conference's central thesis was clear: <strong>the future of design systems isn't just about humans consuming them — it's about machines.</strong> Every session circled back to the same insight: a well-structured design system is the only thing that gives AI context it can't get from training data alone.
+        </p>
+        <p>
+          These are the four frameworks I came home with, and how they're shaping the way I think about systems work today.
+        </p>
+      </div>
+
+      <div class="insight-grid" style="margin-top: 1.75rem;">
+        <div class="insight-card teal fade-in">
+          <div class="insight-num">01</div>
+          <h3>Machine-readable documentation is the new API</h3>
+          <p>Structuring component metadata and design decisions as machine-readable formats — not just human-readable docs — transforms a design system into infrastructure that AI tools can reason about reliably.</p>
+          <div class="insight-source">Diana Wolosin (Indeed) — MCP benchmark testing across 8 documentation configurations</div>
+        </div>
+        <div class="insight-card amber fade-in">
+          <div class="insight-num">02</div>
+          <h3>Governance becomes an automated output, not a manual process</h3>
+          <p>Encoding design contracts as rules and instructions means agents enforce consistency as they generate — reducing the 30–40% of maintenance time most teams spend just keeping things from drifting.</p>
+          <div class="insight-source">Romina Kavcic (The Design System Guide) — Agentic Design Systems</div>
+        </div>
+        <div class="insight-card rose fade-in">
+          <div class="insight-num">03</div>
+          <h3>Your system's decisions are the guardrails AI can't hallucinate</h3>
+          <p>AI can't get your team's specific architectural decisions from training data. But it can get them from a well-structured system. Context-based design systems turn your hard-earned best practices into AI guardrails.</p>
+          <div class="insight-source">Brad Frost, TJ Pitre & Ian Frost — Context-Based Design Systems to the Rescue</div>
+        </div>
+        <div class="insight-card teal fade-in">
+          <div class="insight-num">04</div>
+          <h3>The handoff model is being reinvented — incrementally</h3>
+          <p>Teams starting with MCP integration and incrementally expanding AI capabilities — rather than big-bang transformations — are seeing real velocity gains without quality loss. The path is additive, not disruptive.</p>
+          <div class="insight-source">Andressa Lombardo & Eddie Machado (Miro) — The Path to an AI-Enabled Design System</div>
+        </div>
+      </div>
+
+      <div class="twin-alignment">
+        <h3>How this maps to where I want to work next</h3>
+        <ul>
+          <li>Machine-readable documentation structures directly enable Figma MCP server integration — the exact bridge between design and production code that fast-moving health tech teams need.</li>
+          <li>Agentic governance frameworks address the fragmentation risk that comes with high-velocity, distributed product teams — keeping a system coherent without creating bottlenecks.</li>
+          <li>The incremental MCP path means I can start delivering AI-enabled system velocity within weeks of joining, not after a multi-quarter transformation project.</li>
+          <li>Building AI infrastructure on top of a strong accessibility foundation ensures the speed gains don't come at the cost of inclusive design — non-negotiable in healthcare.</li>
+        </ul>
+      </div>
+
+      <div class="prose" style="margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--divider);">
+        <h3>My current practice</h3>
+        <p>
+          I'm actively applying these frameworks in my work: structuring token documentation in markdown with semantic metadata, building component specifications that are AI-parseable, and exploring Figma MCP server configurations to reduce the manual overhead in design-to-code handoff.
+        </p>
+        <p>
+          The goal isn't to replace the design judgment in a system — it's to make that judgment durable and scalable, so the system serves the next engineer who joins the team just as well as the one who built it.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<div class="section-divider"></div>
+<section id="contact">
+  <div style="text-align: center; max-width: 520px; margin: 0 auto;">
+    <p class="section-label" style="text-align: center;">Get in touch</p>
+    <h2 class="section-title" style="text-align: center;">Let's build something<br><em>worth caring about.</em></h2>
+    <p style="font-size: 1rem; color: var(--ink-muted); line-height: 1.7; font-weight: 300; margin-bottom: 2rem;">
+      I'm interested in senior design systems roles at health technology companies where the work directly impacts patient outcomes. If that sounds like your team, I'd love to talk.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="mailto:meghan.morris23@gmail.com" class="btn-primary">Send an email →</a>
+      <a href="https://www.linkedin.com/in/meghansmorris/" target="_blank" rel="noopener" class="btn-secondary">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Meghan <em>Morris</em></div>
+  <p>Design systems for health technology — built with care, craft, and a deep belief that<br>the systems we build should work for everyone who depends on them.</p>
+  <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.5;">© 2026 · All work shown is abstracted from proprietary implementations</p>
+</footer>
+
+<script>
+  function switchTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
